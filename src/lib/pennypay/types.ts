@@ -15,9 +15,9 @@ export interface Customer {
   id: string;
   name: string;
   mobile: string;
-  email?: string;
+  email?: string | undefined;
   kycStatus: KycStatus;
-  kycRejectionReason?: string;
+  kycRejectionReason?: string | undefined;
   createdAt: string;
 }
 
@@ -36,8 +36,8 @@ export interface Order {
   rate: number;
   network: Network;
   walletAddress: string;
-  receiptName?: string;
-  txid?: string;
+  receiptName?: string | undefined;
+  txid?: string | undefined;
   createdAt: string;
   updatedAt: string;
   timeline: OrderEvent[];
@@ -47,7 +47,7 @@ export interface AppNotification {
   id: string;
   title: string;
   body: string;
-  orderId?: string;
+  orderId?: string | undefined;
   read: boolean;
   createdAt: string;
 }
@@ -58,8 +58,8 @@ export interface BuyDraft {
   rate: number;
   walletAddress: string;
   network: Network;
-  receiptName?: string;
-  orderId?: string;
+  receiptName?: string | undefined;
+  orderId?: string | undefined;
 }
 
 export const ORDER_STATUS_LABEL: Record<OrderStatus, string> = {

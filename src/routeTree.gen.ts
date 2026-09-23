@@ -16,7 +16,9 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as BuyIndexRouteImport } from './routes/buy.index'
+import { Route as BuyPaymentRouteImport } from './routes/buy.payment'
 import { Route as BuyRecipientRouteImport } from './routes/buy.recipient'
+import { Route as BuyReviewRouteImport } from './routes/buy.review'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -53,9 +55,19 @@ const BuyIndexRoute = BuyIndexRouteImport.update({
   path: '/buy/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyPaymentRoute = BuyPaymentRouteImport.update({
+  id: '/buy/payment',
+  path: '/buy/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BuyRecipientRoute = BuyRecipientRouteImport.update({
   id: '/buy/recipient',
   path: '/buy/recipient',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyReviewRoute = BuyReviewRouteImport.update({
+  id: '/buy/review',
+  path: '/buy/review',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -66,7 +78,9 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/payment': typeof BuyPaymentRoute
   '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/review': typeof BuyReviewRoute
   '/buy/': typeof BuyIndexRoute
 }
 export interface FileRoutesByTo {
@@ -76,7 +90,9 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/payment': typeof BuyPaymentRoute
   '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/review': typeof BuyReviewRoute
   '/buy': typeof BuyIndexRoute
 }
 export interface FileRoutesById {
@@ -87,7 +103,9 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/payment': typeof BuyPaymentRoute
   '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/review': typeof BuyReviewRoute
   '/buy/': typeof BuyIndexRoute
 }
 export interface FileRouteTypes {
@@ -99,7 +117,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/verify'
+    | '/buy/payment'
     | '/buy/recipient'
+    | '/buy/review'
     | '/buy/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -109,7 +129,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/verify'
+    | '/buy/payment'
     | '/buy/recipient'
+    | '/buy/review'
     | '/buy'
   id:
     | '__root__'
@@ -119,7 +141,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/verify'
+    | '/buy/payment'
     | '/buy/recipient'
+    | '/buy/review'
     | '/buy/'
   fileRoutesById: FileRoutesById
 }
@@ -130,7 +154,9 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   VerifyRoute: typeof VerifyRoute
+  BuyPaymentRoute: typeof BuyPaymentRoute
   BuyRecipientRoute: typeof BuyRecipientRoute
+  BuyReviewRoute: typeof BuyReviewRoute
   BuyIndexRoute: typeof BuyIndexRoute
 }
 
@@ -185,11 +211,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buy/payment': {
+      id: '/buy/payment'
+      path: '/buy/payment'
+      fullPath: '/buy/payment'
+      preLoaderRoute: typeof BuyPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buy/recipient': {
       id: '/buy/recipient'
       path: '/buy/recipient'
       fullPath: '/buy/recipient'
       preLoaderRoute: typeof BuyRecipientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/review': {
+      id: '/buy/review'
+      path: '/buy/review'
+      fullPath: '/buy/review'
+      preLoaderRoute: typeof BuyReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -202,7 +242,9 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   VerifyRoute: VerifyRoute,
+  BuyPaymentRoute: BuyPaymentRoute,
   BuyRecipientRoute: BuyRecipientRoute,
+  BuyReviewRoute: BuyReviewRoute,
   BuyIndexRoute: BuyIndexRoute,
 }
 export const routeTree = rootRouteImport

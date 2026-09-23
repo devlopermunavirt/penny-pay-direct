@@ -16,24 +16,31 @@ import { cn } from "@/lib/utils";
 import { usePennyPay } from "@/lib/pennypay/store";
 import { Pill } from "@/components/pennypay/status-badge";
 
-const menu = [
+type NavItem = {
+  label: string;
+  to: "/dashboard" | "/buy" | "/orders" | "/profile";
+  icon: typeof LayoutDashboard;
+  soon?: boolean;
+};
+
+const menu: NavItem[] = [
   { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
   { label: "Buy USDT", to: "/buy", icon: ArrowDownToLine },
   { label: "Sell USDT", to: "/dashboard", icon: ArrowUpRight, soon: true },
   { label: "Orders", to: "/orders", icon: Receipt },
-] as const;
+];
 
-const account = [
+const account: NavItem[] = [
   { label: "Profile", to: "/profile", icon: User },
   { label: "Support", to: "/profile", icon: LifeBuoy },
-] as const;
+];
 
-const mobileNav = [
+const mobileNav: NavItem[] = [
   { label: "Home", to: "/dashboard", icon: LayoutDashboard },
   { label: "Buy", to: "/buy", icon: ArrowDownToLine },
   { label: "Orders", to: "/orders", icon: Receipt },
   { label: "Profile", to: "/profile", icon: User },
-] as const;
+];
 
 function useActive() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });

@@ -17,6 +17,7 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as BuyIndexRouteImport } from './routes/buy.index'
 import { Route as BuyPaymentRouteImport } from './routes/buy.payment'
+import { Route as BuyReceiptRouteImport } from './routes/buy.receipt'
 import { Route as BuyRecipientRouteImport } from './routes/buy.recipient'
 import { Route as BuyReviewRouteImport } from './routes/buy.review'
 
@@ -60,6 +61,11 @@ const BuyPaymentRoute = BuyPaymentRouteImport.update({
   path: '/buy/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyReceiptRoute = BuyReceiptRouteImport.update({
+  id: '/buy/receipt',
+  path: '/buy/receipt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BuyRecipientRoute = BuyRecipientRouteImport.update({
   id: '/buy/recipient',
   path: '/buy/recipient',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
   '/buy/payment': typeof BuyPaymentRoute
+  '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
   '/buy/': typeof BuyIndexRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
   '/buy/payment': typeof BuyPaymentRoute
+  '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
   '/buy': typeof BuyIndexRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
   '/buy/payment': typeof BuyPaymentRoute
+  '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
   '/buy/': typeof BuyIndexRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/verify'
     | '/buy/payment'
+    | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
     | '/buy/'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/verify'
     | '/buy/payment'
+    | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
     | '/buy'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/verify'
     | '/buy/payment'
+    | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
     | '/buy/'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   VerifyRoute: typeof VerifyRoute
   BuyPaymentRoute: typeof BuyPaymentRoute
+  BuyReceiptRoute: typeof BuyReceiptRoute
   BuyRecipientRoute: typeof BuyRecipientRoute
   BuyReviewRoute: typeof BuyReviewRoute
   BuyIndexRoute: typeof BuyIndexRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyPaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buy/receipt': {
+      id: '/buy/receipt'
+      path: '/buy/receipt'
+      fullPath: '/buy/receipt'
+      preLoaderRoute: typeof BuyReceiptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buy/recipient': {
       id: '/buy/recipient'
       path: '/buy/recipient'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   VerifyRoute: VerifyRoute,
   BuyPaymentRoute: BuyPaymentRoute,
+  BuyReceiptRoute: BuyReceiptRoute,
   BuyRecipientRoute: BuyRecipientRoute,
   BuyReviewRoute: BuyReviewRoute,
   BuyIndexRoute: BuyIndexRoute,

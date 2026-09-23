@@ -15,6 +15,8 @@ import { Route as KycRouteImport } from './routes/kyc'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as BuyIndexRouteImport } from './routes/buy.index'
+import { Route as BuyRecipientRouteImport } from './routes/buy.recipient'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +48,16 @@ const VerifyRoute = VerifyRouteImport.update({
   path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyIndexRoute = BuyIndexRouteImport.update({
+  id: '/buy/',
+  path: '/buy/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyRecipientRoute = BuyRecipientRouteImport.update({
+  id: '/buy/recipient',
+  path: '/buy/recipient',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +66,8 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/': typeof BuyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +76,8 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/recipient': typeof BuyRecipientRoute
+  '/buy': typeof BuyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,12 +87,30 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/': typeof BuyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/kyc' | '/login' | '/register' | '/verify'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/kyc'
+    | '/login'
+    | '/register'
+    | '/verify'
+    | '/buy/recipient'
+    | '/buy/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/kyc' | '/login' | '/register' | '/verify'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/kyc'
+    | '/login'
+    | '/register'
+    | '/verify'
+    | '/buy/recipient'
+    | '/buy'
   id:
     | '__root__'
     | '/'
@@ -85,6 +119,8 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/verify'
+    | '/buy/recipient'
+    | '/buy/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +130,8 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   VerifyRoute: typeof VerifyRoute
+  BuyRecipientRoute: typeof BuyRecipientRoute
+  BuyIndexRoute: typeof BuyIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -140,6 +178,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buy/': {
+      id: '/buy/'
+      path: '/buy'
+      fullPath: '/buy/'
+      preLoaderRoute: typeof BuyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/recipient': {
+      id: '/buy/recipient'
+      path: '/buy/recipient'
+      fullPath: '/buy/recipient'
+      preLoaderRoute: typeof BuyRecipientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -150,6 +202,8 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   VerifyRoute: VerifyRoute,
+  BuyRecipientRoute: BuyRecipientRoute,
+  BuyIndexRoute: BuyIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

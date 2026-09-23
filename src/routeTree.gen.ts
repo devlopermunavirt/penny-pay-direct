@@ -16,7 +16,9 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as BuyIndexRouteImport } from './routes/buy.index'
+import { Route as BuyCompletedRouteImport } from './routes/buy.completed'
 import { Route as BuyPaymentRouteImport } from './routes/buy.payment'
+import { Route as BuyProcessingRouteImport } from './routes/buy.processing'
 import { Route as BuyReceiptRouteImport } from './routes/buy.receipt'
 import { Route as BuyRecipientRouteImport } from './routes/buy.recipient'
 import { Route as BuyReviewRouteImport } from './routes/buy.review'
@@ -56,9 +58,19 @@ const BuyIndexRoute = BuyIndexRouteImport.update({
   path: '/buy/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyCompletedRoute = BuyCompletedRouteImport.update({
+  id: '/buy/completed',
+  path: '/buy/completed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BuyPaymentRoute = BuyPaymentRouteImport.update({
   id: '/buy/payment',
   path: '/buy/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyProcessingRoute = BuyProcessingRouteImport.update({
+  id: '/buy/processing',
+  path: '/buy/processing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuyReceiptRoute = BuyReceiptRouteImport.update({
@@ -84,7 +96,9 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/completed': typeof BuyCompletedRoute
   '/buy/payment': typeof BuyPaymentRoute
+  '/buy/processing': typeof BuyProcessingRoute
   '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
@@ -97,7 +111,9 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/completed': typeof BuyCompletedRoute
   '/buy/payment': typeof BuyPaymentRoute
+  '/buy/processing': typeof BuyProcessingRoute
   '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
@@ -111,7 +127,9 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
+  '/buy/completed': typeof BuyCompletedRoute
   '/buy/payment': typeof BuyPaymentRoute
+  '/buy/processing': typeof BuyProcessingRoute
   '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
@@ -126,7 +144,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/verify'
+    | '/buy/completed'
     | '/buy/payment'
+    | '/buy/processing'
     | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
@@ -139,7 +159,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/verify'
+    | '/buy/completed'
     | '/buy/payment'
+    | '/buy/processing'
     | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
@@ -152,7 +174,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/verify'
+    | '/buy/completed'
     | '/buy/payment'
+    | '/buy/processing'
     | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
@@ -166,7 +190,9 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   VerifyRoute: typeof VerifyRoute
+  BuyCompletedRoute: typeof BuyCompletedRoute
   BuyPaymentRoute: typeof BuyPaymentRoute
+  BuyProcessingRoute: typeof BuyProcessingRoute
   BuyReceiptRoute: typeof BuyReceiptRoute
   BuyRecipientRoute: typeof BuyRecipientRoute
   BuyReviewRoute: typeof BuyReviewRoute
@@ -224,11 +250,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buy/completed': {
+      id: '/buy/completed'
+      path: '/buy/completed'
+      fullPath: '/buy/completed'
+      preLoaderRoute: typeof BuyCompletedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buy/payment': {
       id: '/buy/payment'
       path: '/buy/payment'
       fullPath: '/buy/payment'
       preLoaderRoute: typeof BuyPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/processing': {
+      id: '/buy/processing'
+      path: '/buy/processing'
+      fullPath: '/buy/processing'
+      preLoaderRoute: typeof BuyProcessingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buy/receipt': {
@@ -262,7 +302,9 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   VerifyRoute: VerifyRoute,
+  BuyCompletedRoute: BuyCompletedRoute,
   BuyPaymentRoute: BuyPaymentRoute,
+  BuyProcessingRoute: BuyProcessingRoute,
   BuyReceiptRoute: BuyReceiptRoute,
   BuyRecipientRoute: BuyRecipientRoute,
   BuyReviewRoute: BuyReviewRoute,

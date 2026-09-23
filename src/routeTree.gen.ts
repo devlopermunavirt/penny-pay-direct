@@ -10,33 +10,245 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as KycRouteImport } from './routes/kyc'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as BuyIndexRouteImport } from './routes/buy.index'
+import { Route as BuyCompletedRouteImport } from './routes/buy.completed'
+import { Route as BuyPaymentRouteImport } from './routes/buy.payment'
+import { Route as BuyProcessingRouteImport } from './routes/buy.processing'
+import { Route as BuyReceiptRouteImport } from './routes/buy.receipt'
+import { Route as BuyRecipientRouteImport } from './routes/buy.recipient'
+import { Route as BuyReviewRouteImport } from './routes/buy.review'
+import { Route as OrdersIndexRouteImport } from './routes/orders.index'
+import { Route as OrdersIdRouteImport } from './routes/orders.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KycRoute = KycRouteImport.update({
+  id: '/kyc',
+  path: '/kyc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyIndexRoute = BuyIndexRouteImport.update({
+  id: '/buy/',
+  path: '/buy/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyCompletedRoute = BuyCompletedRouteImport.update({
+  id: '/buy/completed',
+  path: '/buy/completed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyPaymentRoute = BuyPaymentRouteImport.update({
+  id: '/buy/payment',
+  path: '/buy/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyProcessingRoute = BuyProcessingRouteImport.update({
+  id: '/buy/processing',
+  path: '/buy/processing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyReceiptRoute = BuyReceiptRouteImport.update({
+  id: '/buy/receipt',
+  path: '/buy/receipt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyRecipientRoute = BuyRecipientRouteImport.update({
+  id: '/buy/recipient',
+  path: '/buy/recipient',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyReviewRoute = BuyReviewRouteImport.update({
+  id: '/buy/review',
+  path: '/buy/review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersIndexRoute = OrdersIndexRouteImport.update({
+  id: '/orders/',
+  path: '/orders/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersIdRoute = OrdersIdRouteImport.update({
+  id: '/orders/$id',
+  path: '/orders/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/kyc': typeof KycRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/verify': typeof VerifyRoute
+  '/buy/completed': typeof BuyCompletedRoute
+  '/buy/payment': typeof BuyPaymentRoute
+  '/buy/processing': typeof BuyProcessingRoute
+  '/buy/receipt': typeof BuyReceiptRoute
+  '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/review': typeof BuyReviewRoute
+  '/orders/$id': typeof OrdersIdRoute
+  '/buy/': typeof BuyIndexRoute
+  '/orders/': typeof OrdersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/kyc': typeof KycRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/verify': typeof VerifyRoute
+  '/buy/completed': typeof BuyCompletedRoute
+  '/buy/payment': typeof BuyPaymentRoute
+  '/buy/processing': typeof BuyProcessingRoute
+  '/buy/receipt': typeof BuyReceiptRoute
+  '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/review': typeof BuyReviewRoute
+  '/orders/$id': typeof OrdersIdRoute
+  '/buy': typeof BuyIndexRoute
+  '/orders': typeof OrdersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/kyc': typeof KycRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/verify': typeof VerifyRoute
+  '/buy/completed': typeof BuyCompletedRoute
+  '/buy/payment': typeof BuyPaymentRoute
+  '/buy/processing': typeof BuyProcessingRoute
+  '/buy/receipt': typeof BuyReceiptRoute
+  '/buy/recipient': typeof BuyRecipientRoute
+  '/buy/review': typeof BuyReviewRoute
+  '/orders/$id': typeof OrdersIdRoute
+  '/buy/': typeof BuyIndexRoute
+  '/orders/': typeof OrdersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/kyc'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/register'
+    | '/verify'
+    | '/buy/completed'
+    | '/buy/payment'
+    | '/buy/processing'
+    | '/buy/receipt'
+    | '/buy/recipient'
+    | '/buy/review'
+    | '/orders/$id'
+    | '/buy/'
+    | '/orders/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/kyc'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/register'
+    | '/verify'
+    | '/buy/completed'
+    | '/buy/payment'
+    | '/buy/processing'
+    | '/buy/receipt'
+    | '/buy/recipient'
+    | '/buy/review'
+    | '/orders/$id'
+    | '/buy'
+    | '/orders'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/kyc'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/register'
+    | '/verify'
+    | '/buy/completed'
+    | '/buy/payment'
+    | '/buy/processing'
+    | '/buy/receipt'
+    | '/buy/recipient'
+    | '/buy/review'
+    | '/orders/$id'
+    | '/buy/'
+    | '/orders/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRoute
+  KycRoute: typeof KycRoute
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  RegisterRoute: typeof RegisterRoute
+  VerifyRoute: typeof VerifyRoute
+  BuyCompletedRoute: typeof BuyCompletedRoute
+  BuyPaymentRoute: typeof BuyPaymentRoute
+  BuyProcessingRoute: typeof BuyProcessingRoute
+  BuyReceiptRoute: typeof BuyReceiptRoute
+  BuyRecipientRoute: typeof BuyRecipientRoute
+  BuyReviewRoute: typeof BuyReviewRoute
+  OrdersIdRoute: typeof OrdersIdRoute
+  BuyIndexRoute: typeof BuyIndexRoute
+  OrdersIndexRoute: typeof OrdersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +260,139 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kyc': {
+      id: '/kyc'
+      path: '/kyc'
+      fullPath: '/kyc'
+      preLoaderRoute: typeof KycRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/': {
+      id: '/buy/'
+      path: '/buy'
+      fullPath: '/buy/'
+      preLoaderRoute: typeof BuyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/completed': {
+      id: '/buy/completed'
+      path: '/buy/completed'
+      fullPath: '/buy/completed'
+      preLoaderRoute: typeof BuyCompletedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/payment': {
+      id: '/buy/payment'
+      path: '/buy/payment'
+      fullPath: '/buy/payment'
+      preLoaderRoute: typeof BuyPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/processing': {
+      id: '/buy/processing'
+      path: '/buy/processing'
+      fullPath: '/buy/processing'
+      preLoaderRoute: typeof BuyProcessingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/receipt': {
+      id: '/buy/receipt'
+      path: '/buy/receipt'
+      fullPath: '/buy/receipt'
+      preLoaderRoute: typeof BuyReceiptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/recipient': {
+      id: '/buy/recipient'
+      path: '/buy/recipient'
+      fullPath: '/buy/recipient'
+      preLoaderRoute: typeof BuyRecipientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy/review': {
+      id: '/buy/review'
+      path: '/buy/review'
+      fullPath: '/buy/review'
+      preLoaderRoute: typeof BuyReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders/': {
+      id: '/orders/'
+      path: '/orders'
+      fullPath: '/orders/'
+      preLoaderRoute: typeof OrdersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders/$id': {
+      id: '/orders/$id'
+      path: '/orders/$id'
+      fullPath: '/orders/$id'
+      preLoaderRoute: typeof OrdersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRoute,
+  KycRoute: KycRoute,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  RegisterRoute: RegisterRoute,
+  VerifyRoute: VerifyRoute,
+  BuyCompletedRoute: BuyCompletedRoute,
+  BuyPaymentRoute: BuyPaymentRoute,
+  BuyProcessingRoute: BuyProcessingRoute,
+  BuyReceiptRoute: BuyReceiptRoute,
+  BuyRecipientRoute: BuyRecipientRoute,
+  BuyReviewRoute: BuyReviewRoute,
+  OrdersIdRoute: OrdersIdRoute,
+  BuyIndexRoute: BuyIndexRoute,
+  OrdersIndexRoute: OrdersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

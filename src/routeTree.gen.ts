@@ -22,6 +22,8 @@ import { Route as BuyProcessingRouteImport } from './routes/buy.processing'
 import { Route as BuyReceiptRouteImport } from './routes/buy.receipt'
 import { Route as BuyRecipientRouteImport } from './routes/buy.recipient'
 import { Route as BuyReviewRouteImport } from './routes/buy.review'
+import { Route as OrdersIndexRouteImport } from './routes/orders.index'
+import { Route as OrdersIdRouteImport } from './routes/orders.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -88,6 +90,16 @@ const BuyReviewRoute = BuyReviewRouteImport.update({
   path: '/buy/review',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrdersIndexRoute = OrdersIndexRouteImport.update({
+  id: '/orders/',
+  path: '/orders/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersIdRoute = OrdersIdRouteImport.update({
+  id: '/orders/$id',
+  path: '/orders/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -102,7 +114,9 @@ export interface FileRoutesByFullPath {
   '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
+  '/orders/$id': typeof OrdersIdRoute
   '/buy/': typeof BuyIndexRoute
+  '/orders/': typeof OrdersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -117,7 +131,9 @@ export interface FileRoutesByTo {
   '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
+  '/orders/$id': typeof OrdersIdRoute
   '/buy': typeof BuyIndexRoute
+  '/orders': typeof OrdersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -133,7 +149,9 @@ export interface FileRoutesById {
   '/buy/receipt': typeof BuyReceiptRoute
   '/buy/recipient': typeof BuyRecipientRoute
   '/buy/review': typeof BuyReviewRoute
+  '/orders/$id': typeof OrdersIdRoute
   '/buy/': typeof BuyIndexRoute
+  '/orders/': typeof OrdersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -150,7 +168,9 @@ export interface FileRouteTypes {
     | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
+    | '/orders/$id'
     | '/buy/'
+    | '/orders/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -165,7 +185,9 @@ export interface FileRouteTypes {
     | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
+    | '/orders/$id'
     | '/buy'
+    | '/orders'
   id:
     | '__root__'
     | '/'
@@ -180,7 +202,9 @@ export interface FileRouteTypes {
     | '/buy/receipt'
     | '/buy/recipient'
     | '/buy/review'
+    | '/orders/$id'
     | '/buy/'
+    | '/orders/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -196,7 +220,9 @@ export interface RootRouteChildren {
   BuyReceiptRoute: typeof BuyReceiptRoute
   BuyRecipientRoute: typeof BuyRecipientRoute
   BuyReviewRoute: typeof BuyReviewRoute
+  OrdersIdRoute: typeof OrdersIdRoute
   BuyIndexRoute: typeof BuyIndexRoute
+  OrdersIndexRoute: typeof OrdersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -292,6 +318,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/orders/': {
+      id: '/orders/'
+      path: '/orders'
+      fullPath: '/orders/'
+      preLoaderRoute: typeof OrdersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders/$id': {
+      id: '/orders/$id'
+      path: '/orders/$id'
+      fullPath: '/orders/$id'
+      preLoaderRoute: typeof OrdersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -308,7 +348,9 @@ const rootRouteChildren: RootRouteChildren = {
   BuyReceiptRoute: BuyReceiptRoute,
   BuyRecipientRoute: BuyRecipientRoute,
   BuyReviewRoute: BuyReviewRoute,
+  OrdersIdRoute: OrdersIdRoute,
   BuyIndexRoute: BuyIndexRoute,
+  OrdersIndexRoute: OrdersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

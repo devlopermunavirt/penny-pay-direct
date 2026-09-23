@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as KycRouteImport } from './routes/kyc'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as BuyIndexRouteImport } from './routes/buy.index'
@@ -43,6 +45,16 @@ const KycRoute = KycRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -106,6 +118,8 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/kyc': typeof KycRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
   '/buy/completed': typeof BuyCompletedRoute
@@ -123,6 +137,8 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/kyc': typeof KycRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
   '/buy/completed': typeof BuyCompletedRoute
@@ -141,6 +157,8 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/kyc': typeof KycRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/verify': typeof VerifyRoute
   '/buy/completed': typeof BuyCompletedRoute
@@ -160,6 +178,8 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/kyc'
     | '/login'
+    | '/notifications'
+    | '/profile'
     | '/register'
     | '/verify'
     | '/buy/completed'
@@ -177,6 +197,8 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/kyc'
     | '/login'
+    | '/notifications'
+    | '/profile'
     | '/register'
     | '/verify'
     | '/buy/completed'
@@ -194,6 +216,8 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/kyc'
     | '/login'
+    | '/notifications'
+    | '/profile'
     | '/register'
     | '/verify'
     | '/buy/completed'
@@ -212,6 +236,8 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   KycRoute: typeof KycRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
   VerifyRoute: typeof VerifyRoute
   BuyCompletedRoute: typeof BuyCompletedRoute
@@ -253,6 +279,20 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -340,6 +380,8 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   KycRoute: KycRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
   VerifyRoute: VerifyRoute,
   BuyCompletedRoute: BuyCompletedRoute,

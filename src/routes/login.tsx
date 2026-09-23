@@ -63,7 +63,7 @@ function LoginPage() {
         </>
       }
     >
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={(e) => { e.preventDefault(); void form.handleSubmit(onSubmit)(e); }} className="space-y-5">
         <MobileField
           label="Mobile Number"
           error={form.formState.errors.mobile?.message ?? error}
